@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content">
+	<TextView android:id="@+id/caught"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "Lorem ipsum"
+        android:textSize="8pt"
+        android:textColor="#ffffff"
+        android:padding="5pt"/>
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:background="#35ffffff"
+  			android:orientation="vertical"
+  			android:layout_width="fill_parent" 
+  			android:layout_height="wrap_content" 
+    		android:paddingTop="2pt"
+  			android:paddingBottom="2pt"
+  			android:stretchColumns="*">
+  			<TableRow> 
+		  	    <Button android:id="@+id/okay"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/okay" 
+					android:background="@drawable/okay_button" 
+					android:height="40dip" 
+					android:layout_marginLeft="2pt" 
+					android:layout_marginRight="2pt"/>	
+			    <Button android:id="@+id/cancel"
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_below="@+id/caught"
+			    	android:text="@string/cancel" 
+			    	android:background="@drawable/cancel_button" 
+					android:height="40dip" 
+					android:layout_marginLeft="2pt" 
+					android:layout_marginRight="2pt"/>
+			</TableRow> 
+		</TableLayout>
+</LinearLayout>

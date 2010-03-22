@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.extendsandroid.minutewatch.publish"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".MinuteWatch"
+                  android:label="@string/app_name"
+                  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CallConfirm"
+       			  android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.extendsandroid.minutewatch.publish.receivers.CallReceiver">
+        	<intent-filter android:priority="1">
+        		<action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+        	</intent-filter>
+        </receiver>
+        <receiver android:name=".MonitorCallsManager" 
+				  android:enabled="true" 
+				  android:exported="false"
+				  android:label="CallMonitorManager">
+		    <intent-filter>
+		        <action android:name="android.intent.action.BOOT_COMPLETED" />
+		    </intent-filter>
+		</receiver>
+        <service 
+       		android:enabled="true" 
+       		android:name="com.extendsandroid.minutewatch.publish.services.MonitorCalls">
+       		<intent-filter> 
+			    <action 
+			      android:name="com.extendsandroid.minutewatch.publish.SERVICE_MONITOR_CALLS"
+			    /> 
+		  </intent-filter> 
+        </service> 
+    	<activity android:name="Settings"></activity>
+		<activity android:name="Whitelist" android:label="Ignored Numbers"></activity>
+		<activity android:name=".ContactPicker"
+       		  android:label="Contact Picker">
+	    	 <intent-filter>
+	           <action android:name="com.extendsandroid.minutewatch.publish.PICK"/>
+	           <category android:name="android.intent.category.DEFAULT"/> 
+	       		<data android:path="contacts" 
+	              android:scheme="content"> 
+	        	</data> 
+			 </intent-filter> 
+		</activity>
+		<activity android:name=".Welcome"
+	       		  android:theme="@android:style/Theme.Dialog"
+	       		  android:label="Minute Watch"
+	       		  > 
+	    </activity>
+	    <receiver android:name="com.extendsandroid.minutewatch.publish.receivers.DelayedCallsNotifierReceiver"> 
+		  <intent-filter> 
+		    <action 
+		      android:name="com.extendsandroid.minutewatch.publish.ACTION_NOTIFY_DELAYED_CALLS"
+		    /> 
+		  </intent-filter> 
+		</receiver>
+		<receiver android:name="com.extendsandroid.minutewatch.publish.receivers.MinuteUsageNotifierReceiver"> 
+		  <intent-filter> 
+		    <action 
+		      android:name="com.extendsandroid.minutewatch.publish.ACTION_NOTIFY_MINUTE_USAGE"
+		    /> 
+		  </intent-filter> 
+		</receiver>
+		<receiver android:name="com.extendsandroid.minutewatch.publish.receivers.BillCycleReceiver"> 
+		  <intent-filter> 
+		    <action 
+		      android:name="com.extendsandroid.minutewatch.publish.ACTION_CREATE_ROLLOVER_DATE"
+		    /> 
+		  </intent-filter> 
+		</receiver> 
+	</application>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+</manifest> 
