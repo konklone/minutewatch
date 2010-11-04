@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.extendsandroid.minutewatch.publish.R;
 
-
 public class UnderlinedTextView extends TextView {
 
 	Paint linePaint;
@@ -33,7 +32,7 @@ public class UnderlinedTextView extends TextView {
 	  
 	  @Override
 	  public void onDraw(Canvas canvas) { 
-		  int height = getMeasuredHeight();;
+		  int height = getMeasuredHeight();
 		  int width = getMeasuredWidth();
 		  int white = mWhite;
 		  int grey = mGrey;
@@ -47,12 +46,9 @@ public class UnderlinedTextView extends TextView {
 	  } 
 	  
 	  private void init() {
-	
-		  // Get a reference to our resource table. 
+		  // Get a reference to our resource table 
 		  Resources myResources = getResources();
 		  this.mWhite = myResources.getColor(R.color.white);
 		  this.mGrey = myResources.getColor(R.color.grey);
 	  } 
-
-
 }
